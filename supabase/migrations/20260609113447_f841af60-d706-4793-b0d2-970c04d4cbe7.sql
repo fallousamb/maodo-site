@@ -1,0 +1,2 @@
+REVOKE EXECUTE ON FUNCTION public.prevent_driver_document_self_verify() FROM PUBLIC, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.prevent_driver_status_self_update() FROM PUBLIC, anon, authenticated;

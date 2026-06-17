@@ -1,0 +1,8 @@
+REVOKE EXECUTE ON FUNCTION public.has_role(uuid, public.app_role) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.has_role(uuid, public.app_role) TO authenticated, service_role;
+
+REVOKE EXECUTE ON FUNCTION public.prevent_driver_status_self_update() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.prevent_driver_status_self_update() TO authenticated, service_role;
+
+REVOKE EXECUTE ON FUNCTION public.update_updated_at_column() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.update_updated_at_column() TO authenticated, service_role;

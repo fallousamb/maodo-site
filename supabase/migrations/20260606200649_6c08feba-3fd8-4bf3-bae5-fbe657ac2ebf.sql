@@ -1,0 +1,3 @@
+CREATE POLICY "Admins can update driver availabilities" ON public.driver_availabilities FOR UPDATE TO authenticated USING (public.has_role(auth.uid(), 'admin'::public.app_role)) WITH CHECK (public.has_role(auth.uid(), 'admin'::public.app_role));
+
+CREATE POLICY "Drivers can update their own availabilities" ON public.driver_availabilities FOR UPDATE TO authenticated USING (EXISTS (SELECT 1 FROM public.drivers d WHERE d.id = driver_availabilities.driver_id AND d.user_id = auth.uid())) WITH CHECK (EXISTS (SELECT 1 FROM public.drivers d WHERE d.id = driver_availabilities.driver_id AND d.user_id = auth.uid()));
